@@ -1,4 +1,4 @@
-# News-Portal-Module-D2
+# News-Portal-Module-D5
 Проект News Portal. Итоговое задание модуля D5
 
 # 0. Запуск shell
