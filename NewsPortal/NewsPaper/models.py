@@ -46,7 +46,7 @@ class Post(models.Model):
     # связь один ко многим с Author
     post_author = models.ForeignKey(Author, on_delete=models.CASCADE)
     # связь многие ко многим с Category
-    post_category = models.ManyToManyField(Category)
+    post_category = models.ManyToManyField(Category, through='PostCategory')
 
     """ <<< Настройка выбора категории поста >>> """
     # варианты для поля с выбором (статья или новость)
@@ -54,7 +54,7 @@ class Post(models.Model):
     news = 'N'
 
     POSITIONS = [
-        (article, "Статься"),
+        (article, "Статья"),
         (news, "Новость"),
     ]
 
@@ -103,7 +103,7 @@ class PostCategory(models.Model):
     # связь «один ко многим» с моделью Post
     post_category = models.ForeignKey(Post, on_delete=models.CASCADE)
     # связь «один ко многим» с моделью Category
-    category_category = models.ManyToManyField(Category)
+    category_category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 
 # создаем модель Comment, чтобы можно было под каждой новостью/статьей оставлять комментарии

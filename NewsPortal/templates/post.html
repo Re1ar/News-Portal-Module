@@ -1,5 +1,7 @@
 <! -- наследование шаблона default -->
 {% extends 'flatpages/default.html' %}
+{% load custom_tags %}
+{% load custom_filters %}
 
 {% block title %} Post {% endblock title %}
 
@@ -7,7 +9,10 @@
 {% block content %}
 
 
-<h1><! -- тут укажем название модели --> {{ post }}</h1>
+<h1>{{ post.title|censor }}</h1>
+<h5>{{ post.content|censor }}</h5>
+<h6>Автором является: {{ post.post_author}}</h6>
+<p> Дата публикации: {% current_time '%d %b %Y' %}</p>
 
 
 <! -- конец контента -->
