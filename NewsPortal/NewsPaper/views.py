@@ -87,7 +87,7 @@ class NewsUpdate(UpdateView):
 class NewsDelete(DeleteView):
     model = Post
     success_url = reverse_lazy('post_list')
-    template_name = 'post_delete.html'
+    template_name = 'news_delete.html'
 
 
 class PostCreate(CreateView):
