@@ -1,9 +1,13 @@
 from datetime import datetime, timezone
+from django.shortcuts import render
+
 
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import Sum
+from django.http import HttpResponseRedirect
 from django.template.defaultfilters import truncatewords
+from django.urls import reverse
 
 
 # создаем модель автора
@@ -97,6 +101,9 @@ class Post(models.Model):
     def __str__(self):
         return f'{self.title.title()}: {self.content[:20]}'
 
+    def get_absolute_url(self):
+        return reverse('post_detail', args=[str(self.id)])
+
 
 # создаем промежуточную модель PostCategory
 class PostCategory(models.Model):
@@ -130,3 +137,14 @@ class Comment(models.Model):
         self.comment_rate -= 1
         # сохранение значения в базу данных
         self.save()
+
+def create_post(request):
+    from NewsPortal.NewsPaper.Forms import PostForm
+    form = PostForm(request.POST)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/news/')
+    return render(request,'post_edit.html',{'form':form})
+
