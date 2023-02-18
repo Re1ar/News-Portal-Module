@@ -5,11 +5,9 @@ from .views import PostsList, PostDetail, SearchList, NewsCreate, NewsUpdate, Ne
 
 urlpatterns = [
     # путь ко всем товарам (пустой)
-    path('',
-         # вызываем метод as_view для того, чтобы представить класс PostsList в виде view
-         PostsList.as_view(),name='post_list'),
+    path('news/', PostsList.as_view(),name='post_list'),
     path('<int:pk>', PostDetail.as_view(),name='post_detail'),
-    path('/search/', SearchList.as_view(),name='news_search'),
+    path('search/', SearchList.as_view(),name='news_search'),
     path('news/create/', NewsCreate.as_view(), name='news_create'),
     path('news/<int:pk>/edit/', NewsUpdate.as_view(), name='news_edit'),
     path('news/<int:pk>/delete/', NewsDelete.as_view(), name='news_delete'),
