@@ -93,7 +93,7 @@ class NewsDelete(DeleteView):
 class PostCreate(CreateView):
     form_class = PostForm
     model = Post
-    template_name = 'news_edit.html'
+    template_name = 'post_edit.html'
 
     #@login_required
     def form_valid(self, form):
@@ -107,3 +107,9 @@ class NewsCreate(CreateView):
     form_class = PostForm
     model = Post
     template_name = 'news_edit.html'
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        #form.instance.author = HttpReq
+        post.post_author_id = 1
+        post.category = 'N'
+        return super().form_valid(form)
