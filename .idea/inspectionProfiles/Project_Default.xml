@@ -1,13 +1,10 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
-    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="ignoredIdentifiers">
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
         <list>
-          <option value="telebot.TeleBot" />
-          <option value="django.db.models.fields.related.ForeignKey.price" />
-          <option value="django.db.models.fields.CharField.split" />
-          <option value="NewsPaper.news.models.Order.complete" />
+          <option value="W292" />
         </list>
       </option>
     </inspection_tool>

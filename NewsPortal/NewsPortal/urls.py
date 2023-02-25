@@ -15,15 +15,28 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from news.views import IndexView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # Представление для домашней страницы
+    path('', IndexView.as_view()),
 
-    # чтобы адреса в будущем написанных нами страничек были доступны
-    # нам для перехода по ним, добавим путь:
+    # адрес админки
+    path('admin/', admin.site.urls),
     path('pages/', include('django.contrib.flatpages.urls')),
 
-    # чтобы все адреса из файла NewsPaper/urls.py
-    # сами автоматически подключались когда мы их добавим.
-    path('', include('NewsPaper.urls')),
+    # подключаем все адреса из файла urls, который создан в приложении news
+    # и добавляем их к posts/
+    path('posts/', include('news.urls')),
+
+    path('', include('protect.urls')),
+
+    # перенаправление на ‘account/’ для всех URL, которые будут управляться подключенным пакетом
+    path('account/', include('allauth.urls')),
+    # чтобы использовать этот пакет без дополнительных настроек как решение «из коробки»
+    # достаточно написать базовый шаблон, который будет использовать этот пакет (templates/sign/base.html)
+
+    # подключаем все адреса из файла urls, который создан в приложении sign
+    # и добавляем их к sign/
+    path('sign/', include('sign.urls')),
 ]
