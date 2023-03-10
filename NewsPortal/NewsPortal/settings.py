@@ -71,7 +71,7 @@ INSTALLED_APPS = [
     'django_apscheduler',
 ]
 
-DEFAULT_FROM_EMAIL = 'kalosha21541@yandex.ru'  # здесь указываем ПОЛНУЮ почту, с которой будут отправляться письма
+DEFAULT_FROM_EMAIL = 'rolan@yandex.ru'  # здесь указываем ПОЛНУЮ почту, с которой будут отправляться письма
 
 # Идентификатор (целое число) текущего сайта в таблице базы данных django_site .
 # Может использоваться приложениями для связывания своих данных с определенными сайтами и,
@@ -204,12 +204,12 @@ ACCOUNT_FORMS = {'signup': 'sign.models.BasicSignupForm'}
 # Модуль Д6 - настройка отправки почты
 EMAIL_HOST = 'smtp.yandex.ru'  # адрес сервера Яндекс-почты для всех один и тот же всегда
 EMAIL_PORT = 465  # порт smtp сервера тоже одинаковый всегда
-EMAIL_HOST_USER = 'kalosha21541'  # имя пользователя, например, если почта user@yandex.ru, то надо
+EMAIL_HOST_USER = 'rolan'  # имя пользователя, например, если почта user@yandex.ru, то надо
 # писать user, иными словами, это всё то что идёт до собачки (@)
 EMAIL_HOST_PASSWORD = 'Rfkjifff21541' # пароль от почты
 EMAIL_USE_SSL = True  # Яндекс использует ssl, включать обязательно, защита от хакеров
 
-SERVER_EMAIL = 'kalosha21541@yandex.ru'  # это будет у нас вместо аргумента FROM в массовой рассылке
+SERVER_EMAIL = 'rolan@yandex.ru'  # это будет у нас вместо аргумента FROM в массовой рассылке
 
 # Модуль 6.3 - подтверждение регистрации через почту
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'

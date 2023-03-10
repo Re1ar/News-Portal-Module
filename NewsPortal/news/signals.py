@@ -30,7 +30,7 @@ def send_sub_mail(sender, instance, created, **kwargs):
 
         msg = EmailMultiAlternatives(
             subject=f'Здравствуй, {subscriber.username}. Новая статья в вашем разделе!',
-            from_email='kalosha21541@yandex.ru',
+            from_email='rolan@yandex.ru',
             to=[subscriber.email]
         )
         msg.attach_alternative(html_content, 'text/html')

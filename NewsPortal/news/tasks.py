@@ -1,7 +1,5 @@
-"""
-Этот файл нужен для создания задач (D7).
-"""
 
+from .management.commands.runapscheduler import news_sender
 from celery import shared_task
 import time
 
@@ -13,7 +11,5 @@ def hello():
 
 
 @shared_task
-def printer(N):
-    for i in range(N):
-        time.sleep(1)
-        print(i+1)
+def sender_news():
+    news_sender()

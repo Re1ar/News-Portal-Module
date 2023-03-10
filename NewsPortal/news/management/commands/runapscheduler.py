@@ -1,6 +1,3 @@
-"""
-
-"""
 
 import logging
 
@@ -51,7 +48,7 @@ def news_sender():
                                                                                         'time_of_creation',
                                                                                         'post_category_id__name'):
 
-            # преобразуем дату в человеческий вид - убираем секунды и прочую хрень
+            # преобразуем дату в человеческий вид - убираем секунды и тп
             date_format = post.get("time_of_creation").strftime("%d/%m/%Y")
 
             # из данных запроса выдираем нужные нам поля (time_of_creation - для проверки выводится),
@@ -96,7 +93,7 @@ def news_sender():
 
             msg = EmailMultiAlternatives(
                 subject=f'Здравствуй, {subscriber.username}, новые статьи за прошлую неделю в вашем разделе!',
-                from_email='kalosha21541@yandex.ru',
+                from_email='rolan@yandex.ru',
                 to=[subscriber.email]
             )
 
@@ -108,7 +105,7 @@ def news_sender():
             print(html_content)
 
             # Чтобы запустить реальную рассылку, нужно разкоментить нижнюю строчку
-            # msg.send()
+            msg.send()
 
 
 #
@@ -131,11 +128,11 @@ class Command(BaseCommand):
             news_sender,
 
             # для проверки отправки временно задано время срабатывания каждые 10 секунд
-            trigger=CronTrigger(second="*/10"),
+            #trigger=CronTrigger(second="*/10"),
 
             # временно отключеный код
             # отправляем письма подписчикам в понедельник в 8 утра
-            # trigger=CronTrigger(day_of_week="mon", hour="08", minute="00"),
+            trigger=CronTrigger(day_of_week="mon", hour="08", minute="00"),
 
             # То же, что и интервал, но задача тригера таким образом более понятна django
             id="news_sender",  # уникальный айди
